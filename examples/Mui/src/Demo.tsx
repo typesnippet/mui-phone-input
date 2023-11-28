@@ -1,6 +1,8 @@
 import {useCallback, useMemo, useState} from "react";
+import {Button, Container, CssBaseline} from "@mui/material";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {Button, Container, CssBaseline, InputAdornment, TextField} from "@mui/material";
+
+import CustomInput from "./CustomInput";
 
 const Demo = () => {
 	const [mode, setMode] = useState("dark");
@@ -14,36 +16,9 @@ const Demo = () => {
 			<CssBaseline/>
 			<Container>
 				<div style={{display: "flex", alignItems: "flex-end", gap: 20}}>
-					<TextField
-						variant="filled"
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									🇺🇸
-								</InputAdornment>
-							)
-						}}
-					/>
-					<TextField
-						variant="standard"
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									🇺🇸
-								</InputAdornment>
-							)
-						}}
-					/>
-					<TextField
-						variant="outlined"
-						InputProps={{
-							startAdornment: (
-								<InputAdornment position="start">
-									🇺🇸
-								</InputAdornment>
-							)
-						}}
-					/>
+					<CustomInput variant="filled"/>
+					<CustomInput variant="standard"/>
+					<CustomInput variant="outlined"/>
 				</div>
 				<Button onClick={handleThemeChange}>
 					Change Theme
