@@ -10,6 +10,6 @@ Advanced, highly customizable phone input component for Material UI.
 
 ## TODO
 
-- [ ] Investigate the differences between the Material UI, Joy UI, Base UI, MUI System, MUI X and MUI Toolpad componets.
-- [ ] Depending on the results of the investigation, create basic examples of the group input component.
-- [ ] Configure TS and convert antd-phone-input to MUI.
+- [x] Investigate the differences between the Material UI, Joy UI, Base UI, MUI System, MUI X and MUI Toolpad componets.
+- [x] Depending on the results of the investigation, create basic examples of the group input component.
+- [x] Configure TS and convert antd-phone-input to MUI.
