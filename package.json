@@ -1,5 +1,75 @@
 {
   "version": "0.0.0-reserve",
   "name": "mui-phone-input",
-  "description": "The package is under maintenance and will appear soon..."
+  "description": "Advanced, highly customizable phone input component for Material UI.",
+  "keywords": [
+    "mui",
+    "react",
+    "phone",
+    "input",
+    "number",
+    "material",
+    "advanced",
+    "component",
+    "material-ui",
+    "customizable",
+    "phone-number"
+  ],
+  "homepage": "https://github.com/typesnippet/mui-phone-input",
+  "bugs": {
+    "url": "https://github.com/typesnippet/mui-phone-input/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typesnippet/mui-phone-input"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs.js",
+      "types": {
+        "default": "./index.d.ts"
+      }
+    },
+    "./types": {
+      "import": "./types.js",
+      "require": "./types.cjs.js",
+      "types": {
+        "default": "./types.d.ts"
+      }
+    },
+    "./styles": {
+      "import": "./styles.js",
+      "require": "./styles.cjs.js",
+      "types": {
+        "default": "./styles.d.ts"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index*",
+    "types*",
+    "styles*",
+    "LICENSE",
+    "metadata",
+    "README.md"
+  ],
+  "scripts": {
+    "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
+    "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
+    "prebuild": "rm -r metadata index* types* styles* || true"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@material-ui/core": "^4.0.0",
+    "@mui/material": "^5.0.0",
+    "react": "^16.8.6 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.71",
+    "tslib": "^2.6.2",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2"
+  }
 }
