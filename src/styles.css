@@ -10,22 +10,19 @@
     text-overflow: ellipsis;
 }
 
-/*.mui-phone-input-search-wrapper {*/
-/*    position: relative;*/
-/*}*/
+.mui-phone-input-search-wrapper {
+    position: relative;
+}
 
 .mui-phone-input-search-wrapper .mui-phone-input-search {
-    margin: 0 3px 6px 3px;
-    width: calc(100% - 6px);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    position: sticky;
+    margin: 0 10px 10px 10px;
+    width: calc(100% - 20px);
 }
-
-.mui-phone-input-search-wrapper .mui-phone-input-countries {
-
-}
-
-/*.mui-phone-input-search-wrapper .ant-select-item-empty {*/
-/*    margin: 0 6px 6px 6px;*/
-/*}*/
 
 .mui-phone-input-wrapper {
     position: relative;

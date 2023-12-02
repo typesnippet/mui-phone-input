@@ -91,6 +91,7 @@ const PhoneInput = ({
 	const defaultValueState = defaultValue || countries.find(([iso]) => iso === defaultMetadata?.[0])?.[2] as string;
 
 	const backRef = useRef<boolean>(false);
+	const searchRef = useRef<boolean>(false);
 	const initiatedRef = useRef<boolean>(false);
 	const [open, setOpen] = useState<boolean>(false);
 	const [query, setQuery] = useState<string>("");
@@ -195,49 +196,6 @@ const PhoneInput = ({
 		setValue(formattedNumber);
 	}, [clean, countriesList, metadata, onMount, value])
 
-	// const countriesSelect = useMemo(() => (
-	// 	<Select
-	// 		suffixIcon={null}
-	// 		value={selectValue}
-	// 		open={disableDropdown ? false : undefined}
-	// 		onSelect={(selectedOption, {key: mask}) => {
-	// 			if (selectValue === selectedOption) return;
-	// 			const selectedCountryCode = selectedOption.slice(0, 2);
-	// 			const formattedNumber = displayFormat(cleanInput(mask, mask).join(""));
-	// 			const phoneMetadata = parsePhoneNumber(formattedNumber, countriesList, selectedCountryCode);
-	// 			setFieldValue({...phoneMetadata, valid: (strict: boolean) => checkValidity(phoneMetadata, strict)});
-	// 			setCountryCode(selectedCountryCode);
-	// 			setValue(formattedNumber);
-	// 		}}
-	// 		optionLabelProp="label"
-	// 		dropdownStyle={{maxWidth}}
-	// 		notFoundContent={searchNotFound}
-	// 		dropdownRender={(menu) => (
-	// 			<div className="ant-phone-input-search-wrapper">
-	// 				{enableSearch && (
-	// 					<Input
-	// 						placeholder={searchPlaceholder}
-	// 						onInput={({target}: any) => setQuery(target.value)}
-	// 					/>
-	// 				)}
-	// 				{menu}
-	// 			</div>
-	// 		)}
-	// 	>
-	// 		{countriesList.map(([iso, name, dial, mask]) => (
-	// 			<Select.Option
-	// 				key={mask}
-	// 				value={iso + dial}
-	// 				label={<div className={`flag ${iso}`}/>}
-	// 				children={<div className="ant-phone-input-select-item">
-	// 					<div className={`flag ${iso}`}/>
-	// 					{name}&nbsp;{displayFormat(mask)}
-	// 				</div>}
-	// 			/>
-	// 		))}
-	// 	</Select>
-	// ), [selectValue, disableDropdown, maxWidth, searchNotFound, countriesList, setFieldValue, enableSearch, searchPlaceholder])
-
 	return (
 		<div className="mui-phone-input-wrapper"
 			 ref={node => setMaxWidth(node?.offsetWidth || 0)}>
@@ -245,16 +203,19 @@ const PhoneInput = ({
 				open={open}
 				variant={variant}
 				value={selectValue}
-				onClose={() => setOpen(false)}
+				onClose={() => setOpen(searchRef.current)}
 				style={{position: "absolute", top: 0, left: 0, visibility: "hidden", width: "100%", zIndex: -1}}
 			>
 				<div className="mui-phone-input-search-wrapper">
 					{enableSearch && (
 						<TextField
+							type="search"
 							value={query}
 							variant={searchVariant}
 							className="mui-phone-input-search"
 							onChange={(e: any) => setQuery(e.target.value)}
+							onBlur={() => searchRef.current = false}
+							onFocus={() => searchRef.current = true}
 						/>
 					)}
 					{countriesList.map(([iso, name, dial, mask]) => (
@@ -280,11 +241,12 @@ const PhoneInput = ({
 				</div>
 			</Select>
 			<TextField
+				type="tel"
 				value={value}
+				variant={variant}
 				onInput={onInput}
 				onChange={onChange}
 				onKeyDown={onKeyDown}
-				variant={variant}
 				InputProps={{
 					startAdornment: (
 						<InputAdornment position="start">
