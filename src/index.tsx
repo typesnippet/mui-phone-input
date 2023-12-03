@@ -3,11 +3,12 @@ import {InputAdornment, MenuItem, Select, TextField} from "@mui/material";
 
 import {PhoneInputProps, PhoneNumber} from "./types";
 
+import styleInject from "./styles";
 import timezones from "./metadata/timezones.json";
 import countries from "./metadata/countries.json";
 import validations from "./metadata/validations.json";
 
-import "./styles.css";
+styleInject("styles.css");
 
 const slots = new Set(".");
 

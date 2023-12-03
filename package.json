@@ -58,7 +58,8 @@
   "scripts": {
     "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
     "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
-    "prebuild": "rm -r metadata index* types* styles* || true"
+    "prebuild": "rm -r metadata index* types* styles* || true",
+    "postbuild": "tsx scripts/prepare-styles.ts"
   },
   "license": "MIT",
   "peerDependencies": {
