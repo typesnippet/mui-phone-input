@@ -7,8 +7,8 @@ import Demo from "./Demo";
 const elem = document.getElementById("root");
 const root = ReactDOM.createRoot(elem as Element);
 root.render(
-	<CssVarsProvider defaultMode="dark">
-		<CssBaseline/>
-		<Demo/>
-	</CssVarsProvider>
+    <CssVarsProvider defaultMode="dark">
+        <CssBaseline/>
+        <Demo/>
+    </CssVarsProvider>
 );
