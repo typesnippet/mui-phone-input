@@ -3,7 +3,6 @@ import {InputAdornment, MenuItem, Select, TextField} from "@mui/material";
 
 import {
     checkValidity,
-    cleanInput,
     displayFormat,
     getCountry,
     getDefaultISO2Code,
@@ -142,7 +141,7 @@ const PhoneInput = forwardRef(({
                                 const selectedOption = iso + dial;
                                 if (selectValue === selectedOption) return;
                                 setCountryCode(selectedOption.slice(0, 2));
-                                setValue(displayFormat(cleanInput(mask, mask).join("")));
+                                setValue(getFormattedNumber(mask, mask));
                             }}
                             children={<div className="mui-phone-input-select-item">
                                 <div className={`flag ${iso}`}/>
@@ -165,12 +164,12 @@ const PhoneInput = forwardRef(({
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-							<span
+                            <span
                                 style={{cursor: "pointer"}}
                                 onClick={() => setOpen(!open)}
                             >
-								<div className={`flag ${countryCode}`}/>
-							</span>
+                                <div className={`flag ${countryCode}`}/>
+                            </span>
                         </InputAdornment>
                     )
                 }}
