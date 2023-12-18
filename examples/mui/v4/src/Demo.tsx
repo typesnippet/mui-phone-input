@@ -2,7 +2,7 @@ import {useCallback, useMemo, useState} from "react";
 import {Button, Container, CssBaseline} from "@material-ui/core";
 import {createTheme, ThemeProvider,} from "@material-ui/core/styles";
 
-import CustomInput from "./CustomInput";
+import PhoneInput from "mui-phone-input";
 
 const Demo = () => {
     const [type, setType] = useState("dark");
@@ -16,9 +16,9 @@ const Demo = () => {
             <CssBaseline/>
             <Container>
                 <div style={{display: "flex", alignItems: "flex-end", gap: 20}}>
-                    <CustomInput variant="filled"/>
-                    <CustomInput variant="standard"/>
-                    <CustomInput variant="outlined"/>
+                    <PhoneInput variant="filled"/>
+                    <PhoneInput variant="standard"/>
+                    <PhoneInput variant="outlined"/>
                 </div>
                 <Button onClick={handleThemeChange}>
                     Change Theme

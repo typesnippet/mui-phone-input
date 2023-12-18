@@ -1,7 +1,5 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 
 import Demo from "./Demo";
 
-const elem = document.getElementById("root");
-const root = ReactDOM.createRoot(elem as Element);
-root.render(<Demo/>);
+ReactDOM.render(<Demo/>, document.getElementById("root") as Element);

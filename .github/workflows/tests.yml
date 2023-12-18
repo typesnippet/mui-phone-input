@@ -1,0 +1,44 @@
+name: tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  tests:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 16.x, 18.14.2, 20.x ]
+        environment: [ jest, mui4, mui5, joy ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+
+      - name: Install Tox
+        run: |
+          pip install --upgrade pip
+          pip install tox tox-gh-actions
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: Build and Package
+        run: |
+          npm install
+          npm run build
+          npm pack
+
+      - name: Run Tox Jest
+        run: tox -e ${{ matrix.environment }}
