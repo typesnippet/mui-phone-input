@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x, 18.x, 20.x ]
+        node-version: [ 16.x, 18.14.2, 20.x ]
         environment: [ jest, mui4, mui5, joy ]
 
     steps:
