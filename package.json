@@ -59,8 +59,8 @@
     "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
     "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
     "prebuild": "rm -r resources index* types* styles* || true",
+    "test": "tsx scripts/execute-environment.ts $1",
     "postpack": "tsx scripts/prepare-package.ts",
-    "test": "jest --config jestconfig.json",
     "postbuild": "cp -r src/resources ."
   },
   "license": "MIT",
