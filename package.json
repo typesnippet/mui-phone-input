@@ -38,7 +38,7 @@
     "build:material": "tsx scripts/environment-build.ts . @mui/material",
     "prebuild": "rm -r core resources index* types* styles* || true",
     "build": "npm run build:core && npm run build:material",
-    "test": "tsx scripts/execute-environment.ts $1",
+    "test": "tsx scripts/environment-test.ts $1",
     "postpack": "tsx scripts/prepare-package.ts",
     "postbuild": "cp -r src/resources ."
   },
