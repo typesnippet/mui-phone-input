@@ -1,11 +1,10 @@
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
-import {TextFieldProps as Mui5TextFieldProps} from "@mui/material/TextField";
-import {TextFieldProps as Mui4TextFieldProps} from "@material-ui/core/TextField";
+import {TextFieldProps} from "@mui/material/TextField";
 
 export type PhoneNumber = types.PhoneNumber;
 
-export interface PhoneInputProps extends Omit<Mui5TextFieldProps & Mui4TextFieldProps, "onChange"> {
+export interface PhoneInputProps extends Omit<TextFieldProps, "onChange"> {
     value?: PhoneNumber | string;
 
     variant?: "outlined" | "filled" | "standard";

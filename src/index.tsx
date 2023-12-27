@@ -176,7 +176,7 @@ const PhoneInput = forwardRef(({
                         </InputAdornment>
                     )
                 }}
-                {...muiInputProps}
+                {...(muiInputProps as any)}
             />
         </div>
     )
