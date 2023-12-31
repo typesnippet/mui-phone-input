@@ -1,13 +1,9 @@
 import {useCallback, useMemo, useState} from "react";
 import {Container, createTheme, CssBaseline} from "@mui/material";
-import {Button as ButtonBase, Input as InputBase} from "@mui/base";
-import {styled, ThemeProvider} from "@mui/system";
+import {ThemeProvider} from "@mui/system";
 
-// import PhoneInput from "mui-phone-input";
-
-const Button = styled(ButtonBase)``;
-
-const Input = styled(InputBase)``;
+import {Button} from "./StyledComponents";
+import PhoneInput from "./phone";
 
 const Demo = () => {
     const [mode, setMode] = useState("dark");
@@ -21,19 +17,14 @@ const Demo = () => {
             <CssBaseline/>
             <Container>
                 <div style={{display: "flex", alignItems: "flex-end", gap: 20}}>
-                    {/*<PhoneInput variant="standard"/>*/}
-                    {/*<PhoneInput variant="outlined"/>*/}
-                    <Input
-                        type="text"
-                        endAdornment={<span>+</span>}
-                    />
+                    <PhoneInput/>
                 </div>
                 <Button onClick={handleThemeChange}>
                     Change Theme
                 </Button>
             </Container>
         </ThemeProvider>
-    );
+    )
 }
 
 export default Demo;
