@@ -17,8 +17,8 @@ import {PhoneInputProps, PhoneNumber} from "./types";
 injectMergedStyles();
 
 const Input = forwardRef<HTMLInputElement, InputProps>(({slotProps, ...props}, ref) => {
-    const defaultRootProps = {background: "white", color: "black", display: "flex", alignItems: "center", paddingLeft: 5};
-    const defaultInputProps = {outline: "none", paddingLeft: 5};
+    const defaultRootProps = (slotProps?.root as any)?.className ? {} : {background: "white", color: "black", paddingLeft: 5};
+    const defaultInputProps = (slotProps?.input as any)?.className ? {} : {outline: "none", paddingLeft: 5};
     return (
         <BaseInput
             ref={ref}
@@ -30,6 +30,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({slotProps, ...props}, r
                     style: {
                         ...defaultRootProps,
                         ...(slotProps?.root as any)?.style,
+                        alignItems: "center",
+                        display: "flex",
                     }
                 },
                 input: {
