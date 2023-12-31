@@ -1,0 +1,24 @@
+{
+  ".mui-phone-input-select-item": {
+    "width": "100%",
+    "display": "flex",
+    "column-gap": "10px",
+    "align-items": "center"
+  },
+  ".mui-phone-input-select-item .label": {
+    "overflow": "hidden",
+    "text-overflow": "ellipsis"
+  },
+  ".mui-phone-input-wrapper, .mui-phone-input-search-wrapper": {
+    "position": "relative"
+  },
+  ".mui-phone-input-search-wrapper .mui-phone-input-search": {
+    "top": "0",
+    "left": "0",
+    "right": "0",
+    "z-index": "1",
+    "position": "sticky",
+    "margin": "0 10px 10px 10px",
+    "width": "calc(100% - 20px)"
+  }
+}
