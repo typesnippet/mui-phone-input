@@ -1,10 +1,9 @@
 import {forwardRef} from "react";
 import {Button as BaseButton, ButtonProps} from "@mui/base/Button";
+import {PhoneInputProps} from "mui-phone-input/base/types";
+import PhoneInputBase from "mui-phone-input/base";
 import {useTheme} from "@mui/system";
 import clsx from "clsx";
-
-import PhoneInputBase from "./phone";
-import {PhoneInputProps} from "./phone/types";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({className, ...other}, ref) => {
     const {palette} = useTheme();

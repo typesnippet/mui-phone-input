@@ -1,6 +1,5 @@
 import {Button, useColorScheme} from "@mui/joy";
-
-import PhoneInput from "./phone";
+import PhoneInput from "mui-phone-input/joy";
 
 const Demo = () => {
     const {mode, setMode} = useColorScheme();
