@@ -24,6 +24,8 @@
     "url": "https://github.com/typesnippet/mui-phone-input"
   },
   "files": [
+    "joy",
+    "base",
     "core",
     "index*",
     "types*",
@@ -33,13 +35,11 @@
     "README.md"
   ],
   "scripts": {
-    "rename": "bash -c 'for file in $0/*.js; do mv $file \"${file%.js}.$1.js\"; done'",
-    "build:core": "tsx scripts/environment-build.ts core @material-ui/core",
-    "build:material": "tsx scripts/environment-build.ts . @mui/material",
-    "prebuild": "rm -r core resources index* types* styles* || true",
-    "build": "npm run build:core && npm run build:material",
-    "test": "tsx scripts/environment-test.ts $1",
+    "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
+    "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
+    "prebuild": "rm -r joy base core resources index* types* styles* || true",
     "postpack": "tsx scripts/prepare-package.ts",
+    "test": "jest --config jestconfig.json",
     "postbuild": "cp -r src/resources ."
   },
   "license": "MIT",
@@ -52,6 +52,7 @@
   "devDependencies": {
     "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.0.0",
+    "@mui/base": "^5.0.0-beta.29",
     "@mui/joy": "^5.0.0-beta.18",
     "@mui/material": "^5.0.0",
     "@testing-library/react": "^12.1.2",
