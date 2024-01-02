@@ -1,23 +1,13 @@
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
-import {TextFieldProps} from "@mui/material/TextField";
+import {InputProps} from "@mui/base/Input";
 
 export type PhoneNumber = types.PhoneNumber;
 
-export interface PhoneInputProps extends Omit<TextFieldProps, "onChange"> {
+export interface PhoneInputProps extends Omit<InputProps, "onChange"> {
     value?: PhoneNumber | string;
 
-    searchVariant?: TextFieldProps["variant"];
-
     country?: string;
-
-    enableSearch?: boolean;
-
-    searchNotFound?: string;
-
-    searchPlaceholder?: string;
-
-    disableDropdown?: boolean;
 
     onlyCountries?: string[];
 

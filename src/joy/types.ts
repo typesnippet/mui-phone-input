@@ -1,13 +1,13 @@
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
-import {TextFieldProps} from "@mui/material/TextField";
+import {InputProps} from "@mui/joy";
 
 export type PhoneNumber = types.PhoneNumber;
 
-export interface PhoneInputProps extends Omit<TextFieldProps, "onChange"> {
+export interface PhoneInputProps extends Omit<InputProps, "value" | "onChange"> {
     value?: PhoneNumber | string;
 
-    searchVariant?: TextFieldProps["variant"];
+    searchVariant?: InputProps["variant"];
 
     country?: string;
 
