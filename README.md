@@ -1,12 +1,12 @@
 # MUI Phone Input <img src="https://github.com/typesnippet.png" align="right" height="64" />
 
 [![npm](https://img.shields.io/npm/v/mui-phone-input)](https://www.npmjs.com/package/mui-phone-input)
-[![mui](https://img.shields.io/badge/Mui%204%20%7C%20Mui%205%20%7C%20Joy-blue)](https://mui.com/)
+[![distro](https://img.shields.io/badge/distro-core%20|%20material%20|%20base%20|%20joy-blue)](https://mui.com/)
 [![types](https://img.shields.io/npm/types/mui-phone-input)](https://www.npmjs.com/package/mui-phone-input)
 [![License](https://img.shields.io/npm/l/mui-phone-input)](https://github.com/typesnippet/mui-phone-input/blob/master/LICENSE)
 [![Tests](https://github.com/typesnippet/mui-phone-input/actions/workflows/tests.yml/badge.svg)](https://github.com/typesnippet/mui-phone-input/actions/workflows/tests.yml)
 
-Advanced phone input component for Material UI that leverages the [react-phone-hooks](https://www.npmjs.com/package/react-phone-hooks) supporting all countries. The package is compatible with [@material-ui/core](https://v4.mui.com/), [@mui/material](https://mui.com/), [@mui/base](https://mui.com/base-ui/getting-started/), [@mui/system](https://mui.com/system/getting-started/) and [@mui/joy](https://mui.com/joy-ui/getting-started/) distributions. It provides built-in support for area codes and strict validation.
+Advanced phone input component for Material UI that leverages the [react-phone-hooks](https://www.npmjs.com/package/react-phone-hooks) supporting all countries. The package is compatible with [@material-ui/core](https://v4.mui.com/), [@mui/material](https://mui.com/), [@mui/base](https://mui.com/base-ui/getting-started/) and [@mui/joy](https://mui.com/joy-ui/getting-started/) distributions. It provides built-in support for area codes and strict validation.
 
 ## Value
 
@@ -59,7 +59,7 @@ const Demo = () => {
       />
       <button type="submit">Submit</button>
     </form>
-  );
+  )
 }
 
 export default Demo;

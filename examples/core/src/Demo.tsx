@@ -2,7 +2,7 @@ import {useCallback, useMemo, useState} from "react";
 import {Button, Container, CssBaseline} from "@material-ui/core";
 import {createTheme, ThemeProvider,} from "@material-ui/core/styles";
 
-import PhoneInput from "mui-phone-input";
+import PhoneInput from "mui-phone-input/core";
 
 const Demo = () => {
     const [type, setType] = useState("dark");

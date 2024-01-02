@@ -1,7 +1,5 @@
-import {Button} from "@mui/joy";
-import {useColorScheme} from "@mui/joy/styles";
-
-import CustomInput from "./CustomInput";
+import {Button, useColorScheme} from "@mui/joy";
+import PhoneInput from "mui-phone-input/joy";
 
 const Demo = () => {
     const {mode, setMode} = useColorScheme();
@@ -10,10 +8,10 @@ const Demo = () => {
 
     return (
         <div style={{display: "flex", alignItems: "flex-end", gap: 20, margin: 20}}>
-            <CustomInput variant="plain"/>
-            <CustomInput variant="outlined"/>
-            <CustomInput variant="soft"/>
-            <CustomInput variant="solid"/>
+            <PhoneInput variant="plain"/>
+            <PhoneInput variant="outlined"/>
+            <PhoneInput variant="soft"/>
+            <PhoneInput variant="solid"/>
             <Button onClick={handleThemeChange}>
                 Change Theme
             </Button>

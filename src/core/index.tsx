@@ -1,5 +1,5 @@
 import {ChangeEvent, forwardRef, KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {InputAdornment, MenuItem, Select, TextField} from "@mui/material";
+import {InputAdornment, MenuItem, Select, TextField} from "@material-ui/core";
 
 import {
     checkValidity,

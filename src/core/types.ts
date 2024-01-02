@@ -1,6 +1,6 @@
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
-import {TextFieldProps} from "@mui/material/TextField";
+import {TextFieldProps} from "@material-ui/core/TextField";
 
 export type PhoneNumber = types.PhoneNumber;
 

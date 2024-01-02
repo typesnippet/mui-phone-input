@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-alpha",
+  "version": "0.1.0",
   "name": "mui-phone-input",
   "description": "Advanced, highly customizable phone input component for Material UI.",
   "keywords": [
@@ -23,31 +23,10 @@
     "type": "git",
     "url": "https://github.com/typesnippet/mui-phone-input"
   },
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.cjs.js",
-      "types": {
-        "default": "./index.d.ts"
-      }
-    },
-    "./types": {
-      "import": "./types.js",
-      "require": "./types.cjs.js",
-      "types": {
-        "default": "./types.d.ts"
-      }
-    },
-    "./styles": {
-      "import": "./styles.js",
-      "require": "./styles.cjs.js",
-      "types": {
-        "default": "./styles.d.ts"
-      }
-    },
-    "./package.json": "./package.json"
-  },
   "files": [
+    "joy",
+    "base",
+    "core",
     "index*",
     "types*",
     "styles*",
@@ -58,7 +37,7 @@
   "scripts": {
     "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
     "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
-    "prebuild": "rm -r resources index* types* styles* || true",
+    "prebuild": "rm -r joy base core resources index* types* styles* || true",
     "postpack": "tsx scripts/prepare-package.ts",
     "test": "jest --config jestconfig.json",
     "postbuild": "cp -r src/resources ."
@@ -73,6 +52,7 @@
   "devDependencies": {
     "@emotion/styled": "^11.11.0",
     "@material-ui/core": "^4.0.0",
+    "@mui/base": "^5.0.0-beta.29",
     "@mui/joy": "^5.0.0-beta.18",
     "@mui/material": "^5.0.0",
     "@testing-library/react": "^12.1.2",
