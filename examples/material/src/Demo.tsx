@@ -16,8 +16,8 @@ const Demo = () => {
             <CssBaseline/>
             <Container>
                 <div style={{display: "flex", alignItems: "flex-end", gap: 20}}>
-                    <PhoneInput variant="standard"/>
-                    <PhoneInput variant="outlined"/>
+                    <PhoneInput enableSearch variant="standard"/>
+                    <PhoneInput enableSearch variant="outlined"/>
                 </div>
                 <Button onClick={handleThemeChange}>
                     Change Theme

@@ -8,10 +8,10 @@ const Demo = () => {
 
     return (
         <div style={{display: "flex", alignItems: "flex-end", gap: 20, margin: 20}}>
-            <PhoneInput variant="plain"/>
-            <PhoneInput variant="outlined"/>
-            <PhoneInput variant="soft"/>
-            <PhoneInput variant="solid"/>
+            <PhoneInput enableSearch variant="plain"/>
+            <PhoneInput enableSearch variant="outlined"/>
+            <PhoneInput enableSearch variant="soft"/>
+            <PhoneInput enableSearch variant="solid"/>
             <Button onClick={handleThemeChange}>
                 Change Theme
             </Button>
