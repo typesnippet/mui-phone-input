@@ -117,6 +117,11 @@ const PhoneInput = forwardRef(({
                     variant={variant}
                     value={selectValue}
                     onClose={() => setOpen(searchRef.current)}
+                    MenuProps={{
+                        getContentAnchorEl: null,
+                        anchorOrigin: {vertical: "bottom", horizontal: "center"},
+                        transformOrigin: {vertical: "top", horizontal: "center"},
+                    }}
                     style={{position: "absolute", top: 0, left: 0, visibility: "hidden", width: "100%", zIndex: -1}}
                 >
                     <div className="mui-phone-input-search-wrapper" onKeyDown={(e: any) => e.stopPropagation()}>
