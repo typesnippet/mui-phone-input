@@ -20,5 +20,11 @@
     "position": "sticky",
     "margin": "0 10px 10px 10px",
     "width": "calc(100% - 20px)"
+  },
+  ".mui-phone-input-search-wrapper .mui-phone-input-search-list": {
+    "top": "56px",
+    "overflow": "auto",
+    "position": "sticky",
+    "max-height": "400px"
   }
 }
