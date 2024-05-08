@@ -24,6 +24,7 @@ const PhoneInput = forwardRef(({
                                    variant = undefined,
                                    searchVariant = undefined,
                                    country = getDefaultISO2Code(),
+                                   disabled = false,
                                    enableSearch = false,
                                    disableDropdown = false,
                                    onlyCountries = [],
@@ -111,7 +112,7 @@ const PhoneInput = forwardRef(({
     return (
         <div className="mui-phone-input-wrapper"
              ref={node => setMaxWidth(node?.offsetWidth || 0)}>
-            {!disableDropdown && (
+            {(!disableDropdown && !disabled) && (
                 <Select
                     open={open}
                     variant={variant}
@@ -169,6 +170,7 @@ const PhoneInput = forwardRef(({
                 value={value}
                 variant={variant}
                 onInput={onInput}
+                disabled={disabled}
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 InputProps={{
