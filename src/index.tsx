@@ -37,8 +37,9 @@ const PhoneInput = forwardRef(({
                                    onChange: handleChange = () => null,
                                    onKeyDown: handleKeyDown = () => null,
                                    ...muiInputProps
-                               }: PhoneInputProps, ref: any) => {
+                               }: PhoneInputProps, forwardedRef: any) => {
     searchVariant = searchVariant || variant;
+    const inputRef = useRef<any>(null);
     const searchRef = useRef<boolean>(false);
     const initiatedRef = useRef<boolean>(false);
     const [query, setQuery] = useState<string>("");
@@ -95,6 +96,13 @@ const PhoneInput = forwardRef(({
         handleMount(value);
     }, [handleMount])
 
+    const ref = useCallback((node: any) => {
+        [forwardedRef, inputRef].forEach((ref) => {
+            if (typeof ref === "function") ref(node);
+            else if (ref != null) ref.current = node;
+        })
+    }, [forwardedRef])
+
     useEffect(() => {
         if (initiatedRef.current) return;
         initiatedRef.current = true;
@@ -123,6 +131,7 @@ const PhoneInput = forwardRef(({
                     <div className="mui-phone-input-search-wrapper" onKeyDown={(e: any) => e.stopPropagation()}>
                         {enableSearch && (
                             <TextField
+                                autoFocus
                                 type="search"
                                 value={query}
                                 variant={searchVariant}
@@ -143,9 +152,12 @@ const PhoneInput = forwardRef(({
                                     selected={selectValue === iso + dial}
                                     onClick={() => {
                                         const selectedOption = iso + dial;
-                                        if (selectValue === selectedOption) return;
                                         setCountryCode(selectedOption.slice(0, 2));
                                         setValue(getFormattedNumber(mask, mask));
+                                        setTimeout(() => {
+                                            inputRef.current.querySelector("input").focus();
+                                        }, 100);
+                                        setQuery("");
                                     }}
                                     children={<div className="mui-phone-input-select-item">
                                         <div className={`flag ${iso}`}/>
