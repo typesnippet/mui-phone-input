@@ -151,9 +151,11 @@ const PhoneInput = forwardRef(({
                                         const selectedOption = iso + dial;
                                         setCountryCode(selectedOption.slice(0, 2));
                                         setValue(getFormattedNumber(mask, mask));
-                                        setTimeout(() => {
-                                            inputRef.current.querySelector("input").focus();
-                                        }, 100);
+                                        const input = inputRef.current.querySelector("input");
+                                        const nativeInputValueSetter = (Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value") as any).set;
+                                        nativeInputValueSetter.call(input, getFormattedNumber(mask, mask));
+                                        input.dispatchEvent(new Event("change", {bubbles: true}));
+                                        setTimeout(() => input.focus(), 100);
                                         setQuery("");
                                     }}
                                     children={<div className="mui-phone-input-select-item">
