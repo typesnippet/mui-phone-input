@@ -40,7 +40,7 @@ const Demo = () => {
         setValue(value);
     }, [])
 
-    const error = useMemo(() => value?.valid && !value.valid(), [value]);
+    const error = useMemo(() => value?.valid && !value.valid(strict), [value, strict]);
 
     const theme = useMemo(() => createTheme({palette: {mode: mode as any}}), [mode]);
 
