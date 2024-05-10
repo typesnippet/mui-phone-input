@@ -148,15 +148,16 @@ const PhoneInput = forwardRef(({
                                     style={{maxWidth}}
                                     value={iso + dial}
                                     onClick={() => {
-                                        const selectedOption = iso + dial;
-                                        setCountryCode(selectedOption.slice(0, 2));
-                                        setValue(getFormattedNumber(mask, mask));
+                                        const formattedNumber = getFormattedNumber(mask, mask);
                                         const input = inputRef.current.querySelector("input");
+                                        input.value = formattedNumber;
+                                        setValue(formattedNumber);
+                                        setCountryCode(iso);
+                                        setQuery("");
                                         const nativeInputValueSetter = (Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value") as any).set;
-                                        nativeInputValueSetter.call(input, getFormattedNumber(mask, mask));
+                                        nativeInputValueSetter.call(input, formattedNumber);
                                         input.dispatchEvent(new Event("change", {bubbles: true}));
                                         setTimeout(() => input.focus(), 100);
-                                        setQuery("");
                                     }}
                                     children={<div className="mui-phone-input-select-item">
                                         <div className={`flag ${iso}`}/>
