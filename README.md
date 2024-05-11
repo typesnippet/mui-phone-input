@@ -10,7 +10,9 @@
 <p>Advanced phone input component for Material UI that leverages the <a href="https://www.npmjs.com/package/react-phone-hooks">react-phone-hooks</a> supporting all countries. The package is compatible with <a href="https://v4.mui.com/">@material-ui/core</a>, <a href="https://mui.com/">@mui/material</a>, <a href="https://mui.com/base-ui/getting-started/">@mui/base</a> and <a href="https://mui.com/joy-ui/getting-started/">@mui/joy</a> distributions. It provides built-in support for area codes and strict validation.</p>
 
 <p align="center">
-  <img src="https://github.com/typesnippet/mui-phone-input/assets/44609997/71a747c1-6682-488c-aa7f-01b47a228f8a" alt="MUI Phone Input"/>
+  <a href="https://playground.typesnippet.org/mui-phone-input">
+    <img src="https://github.com/typesnippet/mui-phone-input/assets/44609997/71a747c1-6682-488c-aa7f-01b47a228f8a" alt="MUI Phone Input"/>
+  </a>
 </p>
 
 ## Value
