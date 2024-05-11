@@ -1,12 +1,19 @@
 # MUI Phone Input <img src="https://github.com/typesnippet.png" align="right" height="64" />
 
 [![npm](https://img.shields.io/npm/v/mui-phone-input)](https://www.npmjs.com/package/mui-phone-input)
+[![Playground](https://img.shields.io/badge/playground-blue.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzEzNTE0OTc5MTUzIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjE2MjciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+PHBhdGggZD0iTTc2OCA1MDYuMDI2NjY3djExLjk0NjY2NmEzMi40MjY2NjcgMzIuNDI2NjY3IDAgMCAxLTE1Ljc4NjY2NyAyNy43MzMzMzRMMzcwLjM0NjY2NyA3NjhjLTIzLjA0IDEzLjY1MzMzMy0zNC45ODY2NjcgMTMuNjUzMzMzLTQ1LjIyNjY2NyA3LjY4bC0xMC42NjY2NjctNS45NzMzMzNhMzIuNDI2NjY3IDMyLjQyNjY2NyAwIDAgMS0xNS43ODY2NjYtMjYuODhWMjgxLjE3MzMzM2EzMi40MjY2NjcgMzIuNDI2NjY3IDAgMCAxIDE1Ljc4NjY2Ni0yNy43MzMzMzNsMTAuNjY2NjY3LTUuOTczMzMzYzEwLjI0LTUuOTczMzMzIDIyLjE4NjY2Ny01Ljk3MzMzMyA1Mi4wNTMzMzMgMTEuNTJsMzc1LjA0IDIxOS4zMDY2NjZhMzIuNDI2NjY3IDMyLjQyNjY2NyAwIDAgMSAxNS43ODY2NjcgMjcuNzMzMzM0eiIgcC1pZD0iMTYyOCIgZGF0YS1zcG0tYW5jaG9yLWlkPSJhMzEzeC5zZWFyY2hfaW5kZXguMC5pMS40NzE5M2E4MVdiYjYyWiIgY2xhc3M9IiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==)](https://playground.typesnippet.org/mui-phone-input/)
 [![distro](https://img.shields.io/badge/distro-core%20|%20material%20|%20base%20|%20joy-blue)](https://mui.com/)
 [![types](https://img.shields.io/npm/types/mui-phone-input)](https://www.npmjs.com/package/mui-phone-input)
 [![License](https://img.shields.io/npm/l/mui-phone-input)](https://github.com/typesnippet/mui-phone-input/blob/master/LICENSE)
 [![Tests](https://github.com/typesnippet/mui-phone-input/actions/workflows/tests.yml/badge.svg)](https://github.com/typesnippet/mui-phone-input/actions/workflows/tests.yml)
 
-Advanced phone input component for Material UI that leverages the [react-phone-hooks](https://www.npmjs.com/package/react-phone-hooks) supporting all countries. The package is compatible with [@material-ui/core](https://v4.mui.com/), [@mui/material](https://mui.com/), [@mui/base](https://mui.com/base-ui/getting-started/) and [@mui/joy](https://mui.com/joy-ui/getting-started/) distributions. It provides built-in support for area codes and strict validation.
+<p>Advanced phone input component for Material UI that leverages the <a href="https://www.npmjs.com/package/react-phone-hooks">react-phone-hooks</a> supporting all countries. The package is compatible with <a href="https://v4.mui.com/">@material-ui/core</a>, <a href="https://mui.com/">@mui/material</a>, <a href="https://mui.com/base-ui/getting-started/">@mui/base</a> and <a href="https://mui.com/joy-ui/getting-started/">@mui/joy</a> distributions. It provides built-in support for area codes and strict validation.</p>
+
+<p align="center">
+  <a href="https://playground.typesnippet.org/mui-phone-input">
+    <img src="https://github.com/typesnippet/mui-phone-input/assets/44609997/71a747c1-6682-488c-aa7f-01b47a228f8a" alt="MUI Phone Input"/>
+  </a>
+</p>
 
 ## Value
 
@@ -76,6 +83,7 @@ Apart from the phone-specific properties described below, all [Input](https://mu
 | value              | An object containing a parsed phone number or the raw number.                                                                 | [object](#value) / string |
 | country            | Country code to be selected by default. By default, it will show the flag of the user's country.                              | string                    |
 | enableSearch       | Enables search in the country selection dropdown menu. Default value is `false`.                                              | boolean                   |
+| searchVariant      | Accepts an Input variant, and values depend on the chosen Material distribution.                                              | TextFieldVariants         |
 | searchNotFound     | The value is shown if `enableSearch` is `true` and the query does not match any country. Default value is `No country found`. | string                    |
 | searchPlaceholder  | The value is shown if `enableSearch` is `true`. Default value is `Search country`.                                            | string                    |
 | disableDropdown    | Disables the manual country selection through the dropdown menu.                                                              | boolean                   |

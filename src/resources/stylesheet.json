@@ -25,6 +25,6 @@
     "top": "56px",
     "overflow": "auto",
     "position": "sticky",
-    "max-height": "400px"
+    "max-height": "260px"
   }
 }
