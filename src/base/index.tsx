@@ -1,3 +1,5 @@
+"use client";
+
 import {ChangeEvent, forwardRef, KeyboardEvent, useCallback, useEffect, useRef, useState} from "react";
 import {Input as BaseInput, InputProps} from "@mui/base/Input";
 
