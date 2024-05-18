@@ -1,3 +1,5 @@
+"use client";
+
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
 import {TextFieldProps} from "@material-ui/core/TextField";

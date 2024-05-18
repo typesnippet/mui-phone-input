@@ -1,3 +1,5 @@
+"use client";
+
 import {ChangeEvent, KeyboardEvent} from "react";
 import types from "react-phone-hooks/types";
 import {InputProps} from "@mui/base/Input";
