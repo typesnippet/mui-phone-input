@@ -4,6 +4,7 @@ git restore .
 git pull
 
 cd ~/mui-phone-input/examples/material
+rm -r node_modules package-lock.json
 npm install && npm run build
 
 sudo rm -r /var/www/playground/mui-phone-input/*

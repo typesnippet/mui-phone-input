@@ -52,10 +52,11 @@ const Demo = () => {
         if (disabled) code += "    disabled\n";
         if (search && dropdown) code += "    enableSearch\n";
         if (!dropdown) code += "    disableDropdown\n";
+        if (!parentheses) code += "    disableParentheses\n";
         if (code === "<PhoneInput\n") code = "<PhoneInput />";
         else code += "/>";
         return code;
-    }, [disabled, search, dropdown])
+    }, [disabled, search, dropdown, parentheses])
 
     return (
         <ThemeProvider theme={theme}>
