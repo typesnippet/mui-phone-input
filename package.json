@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "mui-phone-input",
   "description": "Advanced, highly customizable phone input component for Material UI.",
   "keywords": [
@@ -47,7 +47,7 @@
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "react-phone-hooks": "^0.1.4"
+    "react-phone-hooks": "^0.1.5"
   },
   "devDependencies": {
     "@emotion/styled": "^11.11.0",
