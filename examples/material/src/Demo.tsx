@@ -29,6 +29,7 @@ const Demo = () => {
     const [preview, setPreview] = useState<boolean>(false);
     const [dropdown, setDropdown] = useState<boolean>(true);
     const [disabled, setDisabled] = useState<boolean>(false);
+    const [parentheses, setParentheses] = useState(true);
 
     const phoneProps = register("phone", {
         validate: (value: any) => checkValidity(parsePhoneNumber(value)),
@@ -129,6 +130,16 @@ const Demo = () => {
                             style={{margin: 0}}
                             label="Dropdown"
                         />
+                        <FormControlLabel
+                            control={<Switch
+                                defaultChecked
+                                color="primary"
+                                onChange={() => setParentheses(!parentheses)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Parentheses"
+                        />
                     </div>
                     <Divider textAlign="left" style={{margin: "16px 0"}}>Code</Divider>
                     <div style={{position: "relative"}}>
@@ -163,6 +174,7 @@ const Demo = () => {
                                 enableSearch={search}
                                 style={{width: "100%"}}
                                 disableDropdown={!dropdown}
+                                disableParentheses={!parentheses}
                             />
                         )}
                         {(preview && value && !error) && (
