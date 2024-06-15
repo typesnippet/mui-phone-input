@@ -19,8 +19,17 @@ import {PhoneInputProps, PhoneNumber} from "./types";
 injectMergedStyles();
 
 const Input = forwardRef<HTMLInputElement, InputProps>(({slotProps, ...props}, ref) => {
-    const defaultInputProps = (slotProps?.input as any)?.className ? {} : {outline: "none", border: "none", paddingLeft: 5, width: "calc(100% - 30px)"};
-    const defaultRootProps = (slotProps?.root as any)?.className ? {} : {background: "white", color: "black", paddingLeft: 5};
+    const defaultInputProps = (slotProps?.input as any)?.className ? {} : {
+        outline: "none",
+        border: "none",
+        paddingLeft: 5,
+        width: "calc(100% - 30px)"
+    };
+    const defaultRootProps = (slotProps?.root as any)?.className ? {} : {
+        background: "white",
+        color: "black",
+        paddingLeft: 5
+    };
     return (
         <BaseInput
             ref={ref}
@@ -51,6 +60,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({slotProps, ...props}, r
 const PhoneInput = forwardRef(({
                                    value: initialValue = "",
                                    country = getDefaultISO2Code(),
+                                   disableParentheses = false,
                                    onlyCountries = [],
                                    excludeCountries = [],
                                    preferredCountries = [],
@@ -76,6 +86,7 @@ const PhoneInput = forwardRef(({
         onlyCountries,
         excludeCountries,
         preferredCountries,
+        disableParentheses,
     });
 
     const {

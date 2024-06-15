@@ -29,6 +29,7 @@ const PhoneInput = forwardRef(({
                                    disabled = false,
                                    enableSearch = false,
                                    disableDropdown = false,
+                                   disableParentheses = false,
                                    onlyCountries = [],
                                    excludeCountries = [],
                                    preferredCountries = [],
@@ -63,6 +64,7 @@ const PhoneInput = forwardRef(({
         onlyCountries,
         excludeCountries,
         preferredCountries,
+        disableParentheses,
     });
 
     const {
@@ -144,31 +146,34 @@ const PhoneInput = forwardRef(({
                             />
                         )}
                         <div className="mui-phone-input-search-list">
-                            {countriesList.length ? countriesList.map(([iso, name, dial, mask]) => (
-                                <Option
-                                    key={iso + mask}
-                                    style={{maxWidth}}
-                                    value={iso + dial}
-                                    onClick={() => {
-                                        const formattedNumber = getFormattedNumber(mask, mask);
-                                        const input = inputRef.current.querySelector("input");
-                                        input.value = formattedNumber;
-                                        setValue(formattedNumber);
-                                        setCountryCode(iso);
-                                        setQuery("");
-                                        const nativeInputValueSetter = (Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value") as any).set;
-                                        nativeInputValueSetter.call(input, formattedNumber);
-                                        input.dispatchEvent(new Event("change", {bubbles: true}));
-                                        setTimeout(() => input.focus(), 100);
-                                    }}
-                                    children={<div className="mui-phone-input-select-item">
-                                        <div className={`flag ${iso}`}/>
-                                        <div className="label">
-                                            {name}&nbsp;{displayFormat(mask)}
-                                        </div>
-                                    </div>}
-                                />
-                            )) : <Option value="N/A" disabled>{searchNotFound}</Option>}
+                            {countriesList.length ? countriesList.map(([iso, name, dial, pattern]) => {
+                                const mask = disableParentheses ? pattern.replace(/[()]/g, "") : pattern;
+                                return (
+                                    <Option
+                                        key={iso + mask}
+                                        style={{maxWidth}}
+                                        value={iso + dial}
+                                        onClick={() => {
+                                            const formattedNumber = getFormattedNumber(mask, mask);
+                                            const input = inputRef.current.querySelector("input");
+                                            input.value = formattedNumber;
+                                            setValue(formattedNumber);
+                                            setCountryCode(iso);
+                                            setQuery("");
+                                            const nativeInputValueSetter = (Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value") as any).set;
+                                            nativeInputValueSetter.call(input, formattedNumber);
+                                            input.dispatchEvent(new Event("change", {bubbles: true}));
+                                            setTimeout(() => input.focus(), 100);
+                                        }}
+                                        children={<div className="mui-phone-input-select-item">
+                                            <div className={`flag ${iso}`}/>
+                                            <div className="label">
+                                                {name}&nbsp;{displayFormat(mask)}
+                                            </div>
+                                        </div>}
+                                    />
+                                )
+                            }) : <Option value="N/A" disabled>{searchNotFound}</Option>}
                         </div>
                     </div>
                 </Select>
