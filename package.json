@@ -47,7 +47,7 @@
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "react-phone-hooks": "^0.1.5"
+    "react-phone-hooks": "^0.1.6"
   },
   "devDependencies": {
     "@emotion/styled": "^11.11.0",
