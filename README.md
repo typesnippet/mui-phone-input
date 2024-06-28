@@ -74,6 +74,23 @@ export default Demo;
 
 The `valid` function primarily checks if a phone number has a length appropriate for its specified country. In addition, a more comprehensive validation can be performed, including verifying the dial and area codes' accuracy for the selected country. To activate the strict validation, pass `true` as the first argument to the `valid` function.
 
+## Localization
+
+The package provides a built-in localization feature that allows you to change the language of the component. The `locale` function returns the language object that can be passed to the `createTheme` function of Material UI.
+
+```javascript
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import PhoneInput, {locale} from "mui-phone-input";
+
+const theme = createTheme({palette: {...}}, locale("frFR"));
+
+<ThemeProvider theme={theme}>
+    <PhoneInput/>
+</ThemeProvider>
+```
+
+NOTE: If you use localization in the [documented](https://mui.com/material-ui/guides/localization/) way, you should replace the language object with the `locale` function, specifying the desired language code.
+
 ## Props
 
 Apart from the phone-specific properties described below, all [Input](https://mui.com/material-ui/api/input/#props) and [TextField](https://mui.com/material-ui/api/text-field/#props) properties supported by the used Material distribution can be applied to the phone input component.
