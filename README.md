@@ -82,10 +82,10 @@ The package provides a built-in localization feature that allows you to change t
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import PhoneInput, {locale} from "mui-phone-input";
 
-const theme = createTheme({palette: {...}}, locale("frFR"));
+const theme = createTheme({}, locale("frFR"));
 
 <ThemeProvider theme={theme}>
-    <PhoneInput/>
+  <PhoneInput/>
 </ThemeProvider>
 ```
 
