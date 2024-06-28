@@ -16,6 +16,7 @@ import {
     usePhone,
 } from "react-phone-hooks";
 
+import locale from "../locale";
 import {injectMergedStyles} from "./styles";
 import {PhoneInputProps, PhoneNumber} from "./types";
 
@@ -208,3 +209,4 @@ const PhoneInput = forwardRef(({
 })
 
 export default PhoneInput;
+export {PhoneInputProps, PhoneNumber, locale};
