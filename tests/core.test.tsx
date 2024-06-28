@@ -1,6 +1,8 @@
 import {Button} from "@material-ui/core";
+import {createTheme, ThemeProvider} from "@material-ui/core/styles";
 
 import commonTests from "./common";
-import PhoneInput from "../src/core";
+import PhoneInput, {locale} from "../src/core";
 
-commonTests(PhoneInput, Button);
+const theme = createTheme({}, locale("frFR"));
+commonTests(PhoneInput, Button, theme, ThemeProvider);

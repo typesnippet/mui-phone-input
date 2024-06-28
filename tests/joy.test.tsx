@@ -1,6 +1,9 @@
 import {Button} from "@mui/joy";
+import {createTheme} from "@mui/system";
+import {ThemeProvider} from "@mui/joy/styles";
 
 import commonTests from "./common";
-import PhoneInput from "../src/joy";
+import PhoneInput, {locale} from "../src/joy";
 
-commonTests(PhoneInput, Button);
+const theme = createTheme({}, locale("frFR"));
+commonTests(PhoneInput, Button, theme, ThemeProvider);

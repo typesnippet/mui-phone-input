@@ -41,7 +41,7 @@ const FormItem = ({children, register, name, ...props}: any) => {
     return cloneElement(children, {...inputProps, onChange, ...props});
 }
 
-export default function commonTests(PhoneInput: any, Button: any) {
+export default function commonTests(PhoneInput: any, Button: any, theme: any, ThemeProvider: any) {
     describe("Checking the basic rendering and functionality", () => {
         it("Rendering without crashing", () => {
             render(<PhoneInput/>);
@@ -50,6 +50,17 @@ export default function commonTests(PhoneInput: any, Button: any) {
         it("Rendering with a raw initial value", () => {
             render(<PhoneInput value="17021234567"/>);
             assert(screen.getByDisplayValue("+1 (702) 123 4567"));
+        })
+
+        it("Localization support check", async () => {
+            if (theme === null) return; // Skip for @mui/base distribution
+            const {container, getByText} = render(<ThemeProvider theme={theme}>
+                <PhoneInput onlyCountries={["am"]}/>
+            </ThemeProvider>);
+            await act(async () => {
+                await userEvent.click(container.querySelector(".flag") as any);
+            });
+            assert(!!getByText(/Arménie[\S\s]+\+374/));
         })
 
         it("Rendering with an initial value", () => {
