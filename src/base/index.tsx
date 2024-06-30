@@ -145,3 +145,4 @@ const PhoneInput = forwardRef(({
 })
 
 export default PhoneInput;
+export {PhoneInputProps, PhoneNumber};

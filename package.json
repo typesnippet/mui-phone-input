@@ -1,5 +1,5 @@
 {
-  "version": "0.1.2",
+  "version": "0.1.3",
   "name": "mui-phone-input",
   "description": "Advanced, highly customizable phone input component for Material UI.",
   "keywords": [
@@ -30,6 +30,7 @@
     "index*",
     "types*",
     "styles*",
+    "locale*",
     "LICENSE",
     "resources",
     "README.md"
@@ -37,7 +38,7 @@
   "scripts": {
     "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
     "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
-    "prebuild": "rm -r joy base core resources index* types* styles* || true",
+    "prebuild": "rm -r joy base core resources index* locale* types* styles* || true",
     "postpack": "tsx scripts/prepare-package.ts",
     "test": "jest --config jestconfig.json",
     "postbuild": "cp -r src/resources ."
@@ -47,7 +48,7 @@
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "react-phone-hooks": "^0.1.5"
+    "react-phone-hooks": "^0.1.6"
   },
   "devDependencies": {
     "@emotion/styled": "^11.11.0",
