@@ -23,6 +23,7 @@ const Demo = () => {
     const [value, setValue] = useState<any>(null);
     const [mode, setMode] = useState<string>("light");
     const [show, setShow] = useState<boolean>(true);
+    const [arrow, setArrow] = useState<boolean>(false);
     const [strict, setStrict] = useState<boolean>(false);
     const [search, setSearch] = useState<boolean>(false);
     const [copied, setCopied] = useState<boolean>(false);
@@ -50,13 +51,14 @@ const Demo = () => {
     const code = useMemo(() => {
         let code = "<PhoneInput\n";
         if (disabled) code += "    disabled\n";
+        if (arrow) code += "    enableArrow\n";
         if (search && dropdown) code += "    enableSearch\n";
         if (!dropdown) code += "    disableDropdown\n";
         if (!parentheses) code += "    disableParentheses\n";
         if (code === "<PhoneInput\n") code = "<PhoneInput />";
         else code += "/>";
         return code;
-    }, [disabled, search, dropdown, parentheses])
+    }, [disabled, arrow, search, dropdown, parentheses])
 
     return (
         <ThemeProvider theme={theme}>
@@ -113,16 +115,6 @@ const Demo = () => {
                     <div style={{gap: 24, display: "flex", alignItems: "center"}}>
                         <FormControlLabel
                             control={<Switch
-                                color="primary"
-                                disabled={!dropdown}
-                                onChange={() => setSearch(!search)}
-                            />}
-                            labelPlacement="start"
-                            style={{margin: 0}}
-                            label="Search"
-                        />
-                        <FormControlLabel
-                            control={<Switch
                                 defaultChecked
                                 color="primary"
                                 onChange={() => setDropdown(!dropdown)}
@@ -140,6 +132,27 @@ const Demo = () => {
                             labelPlacement="start"
                             style={{margin: 0}}
                             label="Parentheses"
+                        />
+                    </div>
+                    <div style={{gap: 24, display: "flex", alignItems: "center"}}>
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                disabled={!dropdown}
+                                onChange={() => setSearch(!search)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Search"
+                        />
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={() => setArrow(!arrow)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Arrow"
                         />
                     </div>
                     <Divider textAlign="left" style={{margin: "16px 0"}}>Code</Divider>
@@ -172,6 +185,7 @@ const Demo = () => {
                                 error={error}
                                 disabled={disabled}
                                 onChange={onChange}
+                                enableArrow={arrow}
                                 enableSearch={search}
                                 style={{width: "100%"}}
                                 disableDropdown={!dropdown}
