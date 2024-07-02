@@ -99,6 +99,7 @@ Apart from the phone-specific properties described below, all [Input](https://mu
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | value              | An object containing a parsed phone number or the raw number.                                                                 | [object](#value) / string |
 | country            | Country code to be selected by default. By default, it will show the flag of the user's country.                              | string                    |
+| enableArrow        | Shows an arrow next to the country flag. Default value is `false`.                                                            | boolean                   |
 | enableSearch       | Enables search in the country selection dropdown menu. Default value is `false`.                                              | boolean                   |
 | searchVariant      | Accepts an Input variant, and values depend on the chosen Material distribution.                                              | TextFieldVariants         |
 | searchNotFound     | The value is shown if `enableSearch` is `true` and the query does not match any country. Default value is `No country found`. | string                    |
