@@ -28,6 +28,7 @@ const PhoneInput = forwardRef(({
                                    searchVariant = undefined,
                                    country = getDefaultISO2Code(),
                                    disabled = false,
+                                   enableArrow = false,
                                    enableSearch = false,
                                    disableDropdown = false,
                                    disableParentheses = false,
@@ -201,10 +202,21 @@ const PhoneInput = forwardRef(({
                     startAdornment: (
                         <InputAdornment position="start">
                             <span
-                                style={{cursor: "pointer"}}
+                                style={{
+                                    display: "flex",
+                                    cursor: "pointer",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
                                 onClick={() => setOpen(!open)}
                             >
                                 <div className={`flag ${countryCode}`}/>
+                                {enableArrow && (
+                                    <svg viewBox="0 0 24 24" focusable="false" fill="currentColor"
+                                         style={{paddingLeft: 4}} width="22" height="20">
+                                        <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+                                    </svg>
+                                )}
                             </span>
                         </InputAdornment>
                     )
