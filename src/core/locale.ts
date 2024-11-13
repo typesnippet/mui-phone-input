@@ -6,6 +6,9 @@ type Locale = keyof typeof locale;
 export default (lang: Locale) => ({
     props: {
         ...locale[lang].props,
-        MuiPhoneInput: (phoneLocale as any)[lang],
+        MuiPhoneInput: {
+            ...(phoneLocale as any)[lang],
+            locale: lang,
+        },
     }
 })
