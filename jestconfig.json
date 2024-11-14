@@ -1,8 +1,12 @@
 {
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.jsx?$": "babel-jest"
   },
   "testRegex": "/tests/.*\\.test\\.(tsx?)$",
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(react-phone-hooks)/)"
+  ],
   "modulePathIgnorePatterns": [
     "<rootDir>/examples"
   ],
