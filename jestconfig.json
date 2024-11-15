@@ -4,6 +4,9 @@
     "^.+\\.jsx?$": "babel-jest"
   },
   "testRegex": "/tests/.*\\.test\\.(tsx?)$",
+  "moduleNameMapper": {
+    "^@mui/(.+)$": "@mui/$1"
+  },
   "transformIgnorePatterns": [
     "/node_modules/(?!(react-phone-hooks)/)"
   ],
