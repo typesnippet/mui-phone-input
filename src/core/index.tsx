@@ -54,6 +54,7 @@ const PhoneInput = forwardRef(({
     const [countryCode, setCountryCode] = useState<string>(country);
 
     const {
+        locale,
         searchNotFound = defaultSearchNotFound,
         searchPlaceholder = defaultSearchPlaceholder,
         countries = new Proxy({}, ({get: (_: any, prop: any) => prop})),
@@ -67,6 +68,7 @@ const PhoneInput = forwardRef(({
         countriesList,
     } = usePhone({
         query,
+        locale,
         country,
         countryCode,
         initialValue,

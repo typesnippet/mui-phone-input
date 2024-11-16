@@ -7,7 +7,10 @@ export default (lang: Locale) => ({
     components: {
         ...locale[lang].components,
         MuiPhoneInput: {
-            defaultProps: (phoneLocale as any)[lang],
+            defaultProps: {
+                ...(phoneLocale as any)[lang],
+                locale: lang,
+            },
         }
     }
 })
