@@ -39,7 +39,7 @@
     "rename": "bash -c 'for file in *.js; do mv $file \"${file%.js}.$0.js\"; done'",
     "build": "tsc --module commonjs && npm run rename -- cjs && tsc --declaration",
     "prebuild": "rm -r joy base core resources index* locale* types* styles* || true",
-    "postpack": "tsx scripts/prepare-package.ts",
+    "postpack": "tsx scripts/prepare-package.ts && mv babel.config.cjs.js babel.config.js",
     "test": "jest --config jestconfig.json",
     "postbuild": "cp -r src/resources ."
   },
