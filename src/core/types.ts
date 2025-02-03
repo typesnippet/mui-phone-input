@@ -13,6 +13,8 @@ export interface PhoneInputProps extends Omit<TextFieldProps, "onChange"> {
 
     country?: string;
 
+    distinct?: boolean;
+
     enableArrow?: boolean;
 
     enableSearch?: boolean;
