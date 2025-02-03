@@ -29,6 +29,7 @@ const Demo = () => {
     const [copied, setCopied] = useState<boolean>(false);
     const [preview, setPreview] = useState<boolean>(false);
     const [dropdown, setDropdown] = useState<boolean>(true);
+    const [distinct, setDistinct] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [parentheses, setParentheses] = useState(true);
 
@@ -50,6 +51,7 @@ const Demo = () => {
 
     const code = useMemo(() => {
         let code = "<PhoneInput\n";
+        if (distinct) code += "    distinct\n";
         if (disabled) code += "    disabled\n";
         if (arrow) code += "    enableArrow\n";
         if (search && dropdown) code += "    enableSearch\n";
@@ -58,7 +60,7 @@ const Demo = () => {
         if (code === "<PhoneInput\n") code = "<PhoneInput />";
         else code += "/>";
         return code;
-    }, [disabled, arrow, search, dropdown, parentheses])
+    }, [distinct, disabled, arrow, search, dropdown, parentheses])
 
     return (
         <ThemeProvider theme={theme}>
@@ -85,36 +87,6 @@ const Demo = () => {
                     <div style={{gap: 24, display: "flex", alignItems: "center"}}>
                         <FormControlLabel
                             control={<Switch
-                                color="primary"
-                                onChange={changeTheme}
-                            />}
-                            labelPlacement="start"
-                            style={{margin: 0}}
-                            label="Theme"
-                        />
-                        <FormControlLabel
-                            control={<Switch
-                                color="primary"
-                                onChange={() => setStrict(!strict)}
-                            />}
-                            labelPlacement="start"
-                            style={{margin: 0}}
-                            label="Validation"
-                            defaultChecked
-                        />
-                        <FormControlLabel
-                            control={<Switch
-                                color="primary"
-                                onChange={() => setDisabled(!disabled)}
-                            />}
-                            labelPlacement="start"
-                            style={{margin: 0}}
-                            label="Disabled"
-                        />
-                    </div>
-                    <div style={{gap: 24, display: "flex", alignItems: "center"}}>
-                        <FormControlLabel
-                            control={<Switch
                                 defaultChecked
                                 color="primary"
                                 onChange={() => setDropdown(!dropdown)}
@@ -132,6 +104,47 @@ const Demo = () => {
                             labelPlacement="start"
                             style={{margin: 0}}
                             label="Parentheses"
+                        />
+                    </div>
+                    <div style={{gap: 24, display: "flex", alignItems: "center"}}>
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={changeTheme}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Theme"
+                        />
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={() => setStrict(!strict)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Validation"
+                            defaultChecked
+                        />
+                    </div>
+                    <div style={{gap: 24, display: "flex", alignItems: "center"}}>
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={() => setDisabled(!disabled)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Disabled"
+                        />
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={() => setDistinct(!distinct)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="Distinct"
                         />
                     </div>
                     <div style={{gap: 24, display: "flex", alignItems: "center"}}>
@@ -183,6 +196,7 @@ const Demo = () => {
                             <PhoneInput
                                 {...phoneProps}
                                 error={error}
+                                distinct={distinct}
                                 disabled={disabled}
                                 onChange={onChange}
                                 enableArrow={arrow}
