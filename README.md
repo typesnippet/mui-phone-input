@@ -95,23 +95,24 @@ NOTE: If you use localization in the [documented](https://mui.com/material-ui/gu
 
 Apart from the phone-specific properties described below, all [Input](https://mui.com/material-ui/api/input/#props) and [TextField](https://mui.com/material-ui/api/text-field/#props) properties supported by the used Material distribution can be applied to the phone input component.
 
-| Property           | Description                                                                                                                   | Type                      |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| value              | An object containing a parsed phone number or the raw number.                                                                 | [object](#value) / string |
-| country            | Country code to be selected by default. By default, it will show the flag of the user's country.                              | string                    |
-| distinct           | Show the distinct list of country codes not listing all area codes.                                                           | boolean                   |
-| enableArrow        | Shows an arrow next to the country flag. Default value is `false`.                                                            | boolean                   |
-| enableSearch       | Enables search in the country selection dropdown menu. Default value is `false`.                                              | boolean                   |
-| searchVariant      | Accepts an Input variant, and values depend on the chosen Material distribution.                                              | TextFieldVariants         |
-| searchNotFound     | The value is shown if `enableSearch` is `true` and the query does not match any country. Default value is `No country found`. | string                    |
-| searchPlaceholder  | The value is shown if `enableSearch` is `true`. Default value is `Search country`.                                            | string                    |
-| disableDropdown    | Disables the manual country selection through the dropdown menu.                                                              | boolean                   |
-| disableParentheses | Disables parentheses from the input masks. Default enabled.                                                                   | boolean                   |
-| onlyCountries      | Country codes to be included in the list. E.g. `onlyCountries={['us', 'ca', 'uk']}`.                                          | string[]                  |
-| excludeCountries   | Country codes to be excluded from the list of countries. E.g. `excludeCountries={['us', 'ca', 'uk']}`.                        | string[]                  |
-| preferredCountries | Country codes to be at the top of the list. E.g. `preferredCountries={['us', 'ca', 'uk']}`.                                   | string[]                  |
-| onChange           | The only difference from the default `onChange` is that value comes first.                                                    | function(value, event)    |
-| onMount            | The callback is triggered once the component gets mounted.                                                                    | function(value)           |
+| Property           | Description                                                                                                                   | Type                          |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| value              | An object containing a parsed phone number or the raw number.                                                                 | [object](#value) / string     |
+| useSVG             | Whether to use **SVG** icons for the flags or keep the default. By default, it will use **PNG** icons.                        | boolean                       |
+| country            | Country code to be selected by default. By default, it will show the flag of the user's country.                              | string                        |
+| distinct           | Show the distinct list of country codes not listing all area codes.                                                           | boolean                       |
+| enableArrow        | Shows an arrow next to the country flag. Default value is `false`.                                                            | boolean                       |
+| enableSearch       | Enables search in the country selection dropdown menu. Default value is `false`.                                              | boolean                       |
+| searchVariant      | Accepts an Input variant, and values depend on the chosen Material distribution.                                              | TextFieldVariants             |
+| searchNotFound     | The value is shown if `enableSearch` is `true` and the query does not match any country. Default value is `No country found`. | string                        |
+| searchPlaceholder  | The value is shown if `enableSearch` is `true`. Default value is `Search country`.                                            | string                        |
+| disableDropdown    | Disables the manual country selection through the dropdown menu.                                                              | boolean                       |
+| disableParentheses | Disables parentheses from the input masks. Default enabled.                                                                   | boolean                       |
+| onlyCountries      | Country codes to be included in the list. E.g. `onlyCountries={['us', 'ca', 'uk']}`.                                          | string[]                      |
+| excludeCountries   | Country codes to be excluded from the list of countries. E.g. `excludeCountries={['us', 'ca', 'uk']}`.                        | string[]                      |
+| preferredCountries | Country codes to be at the top of the list. E.g. `preferredCountries={['us', 'ca', 'uk']}`.                                   | string[]                      |
+| onChange           | The only difference from the default `onChange` is that value comes first.                                                    | function(value, event)        |
+| onMount            | The callback is triggered once the component gets mounted.                                                                    | function(value)               |
 
 ## Contribute
 

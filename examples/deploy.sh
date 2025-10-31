@@ -3,6 +3,9 @@ cd ~/mui-phone-input/
 git restore .
 git pull
 
+rm -r node_modules package-lock.json
+npm i && npm run build && npm pack
+
 cd ~/mui-phone-input/examples/material
 rm -r node_modules package-lock.json
 npm install && npm run build
