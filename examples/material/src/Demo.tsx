@@ -24,6 +24,7 @@ const Demo = () => {
     const [mode, setMode] = useState<string>("light");
     const [show, setShow] = useState<boolean>(true);
     const [arrow, setArrow] = useState<boolean>(false);
+    const [useSvg, setUseSvg] = useState(false);
     const [strict, setStrict] = useState<boolean>(false);
     const [search, setSearch] = useState<boolean>(false);
     const [copied, setCopied] = useState<boolean>(false);
@@ -51,6 +52,7 @@ const Demo = () => {
 
     const code = useMemo(() => {
         let code = "<PhoneInput\n";
+        if (useSvg) code += "    useSVG\n";
         if (distinct) code += "    distinct\n";
         if (disabled) code += "    disabled\n";
         if (arrow) code += "    enableArrow\n";
@@ -60,7 +62,7 @@ const Demo = () => {
         if (code === "<PhoneInput\n") code = "<PhoneInput />";
         else code += "/>";
         return code;
-    }, [distinct, disabled, arrow, search, dropdown, parentheses])
+    }, [distinct, disabled, useSvg, arrow, search, dropdown, parentheses])
 
     return (
         <ThemeProvider theme={theme}>
@@ -104,6 +106,15 @@ const Demo = () => {
                             labelPlacement="start"
                             style={{margin: 0}}
                             label="Parentheses"
+                        />
+                        <FormControlLabel
+                            control={<Switch
+                                color="primary"
+                                onChange={() => setUseSvg(!useSvg)}
+                            />}
+                            labelPlacement="start"
+                            style={{margin: 0}}
+                            label="SVG"
                         />
                     </div>
                     <div style={{gap: 24, display: "flex", alignItems: "center"}}>
@@ -196,6 +207,7 @@ const Demo = () => {
                             <PhoneInput
                                 {...phoneProps}
                                 error={error}
+                                useSVG={useSvg}
                                 distinct={distinct}
                                 disabled={disabled}
                                 onChange={onChange}
