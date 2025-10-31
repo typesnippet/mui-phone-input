@@ -27,6 +27,7 @@ const PhoneInput = forwardRef(({
                                    variant = undefined,
                                    searchVariant = undefined,
                                    country = getDefaultISO2Code(),
+                                   useSVG = false,
                                    distinct = false,
                                    disabled = false,
                                    enableArrow = false,
@@ -181,7 +182,7 @@ const PhoneInput = forwardRef(({
                                             setTimeout(() => input.focus(), 100);
                                         }}
                                         children={<div className="mui-phone-input-select-item">
-                                            <div className={`flag ${iso}`}/>
+                                            <div className={`flag ${iso} ${useSVG ? "svg" : ""}`}/>
                                             <div className="label">
                                                 {countries[name]}&nbsp;{displayFormat(mask)}
                                             </div>
@@ -214,7 +215,7 @@ const PhoneInput = forwardRef(({
                                 }}
                                 onClick={() => setOpen(!open)}
                             >
-                                <div className={`flag ${countryCode}`}/>
+                                <div className={`flag ${countryCode} ${useSVG ? "svg" : ""}`}/>
                                 {enableArrow && (
                                     <svg viewBox="0 0 24 24" focusable="false" fill="currentColor"
                                          style={{paddingLeft: 4}} width="22" height="20">

@@ -60,6 +60,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({slotProps, ...props}, r
 const PhoneInput = forwardRef(({
                                    value: initialValue = "",
                                    country = getDefaultISO2Code(),
+                                   useSVG = false,
                                    disableParentheses = false,
                                    onlyCountries = [],
                                    excludeCountries = [],
@@ -138,7 +139,7 @@ const PhoneInput = forwardRef(({
             onInput={onInput}
             onChange={onChange}
             onKeyDown={onKeyDown}
-            startAdornment={<div className={`flag ${countryCode}`}/>}
+            startAdornment={<div className={`flag ${countryCode} ${useSVG ? "svg" : ""}`}/>}
             {...(muiInputProps as any)}
         />
     )

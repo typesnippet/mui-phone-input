@@ -9,6 +9,8 @@ export type PhoneNumber = types.PhoneNumber;
 export interface PhoneInputProps extends Omit<InputProps, "onChange"> {
     value?: PhoneNumber | string;
 
+    useSVG?: boolean;
+
     country?: string;
 
     disableParentheses?: boolean;
