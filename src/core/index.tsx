@@ -23,6 +23,16 @@ import {PhoneInputProps, PhoneNumber} from "./types";
 
 injectMergedStyles();
 
+// Shown instead of a flag while the value is empty with `disableDefaultCountry`
+const placeholder = (
+    <svg className="mui-phone-input-placeholder" viewBox="0 0 16 16" focusable="false"
+         width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.2">
+        <circle cx="8" cy="8" r="6.5"/>
+        <ellipse cx="8" cy="8" rx="2.75" ry="6.5"/>
+        <path d="M1.5 8h13"/>
+    </svg>
+)
+
 const PhoneInput = forwardRef(({
                                    value: initialValue = "",
                                    variant = undefined,
@@ -35,6 +45,7 @@ const PhoneInput = forwardRef(({
                                    enableSearch = false,
                                    disableDropdown = false,
                                    disableParentheses = false,
+                                   disableDefaultCountry = false,
                                    onlyCountries = [],
                                    excludeCountries = [],
                                    preferredCountries = [],
@@ -54,6 +65,8 @@ const PhoneInput = forwardRef(({
     const [open, setOpen] = useState<boolean>(false);
     const [maxWidth, setMaxWidth] = useState<number>(0);
     const [countryCode, setCountryCode] = useState<string>(country);
+    // With `disableDefaultCountry`, an empty value shows an empty input and no country instead of a default one.
+    const [isEmpty, setIsEmpty] = useState<boolean>(() => disableDefaultCountry && !getRawValue(initialValue));
 
     const {
         locale,
@@ -86,10 +99,11 @@ const PhoneInput = forwardRef(({
     } = useMask(pattern);
 
     const selectValue = useMemo(() => {
+        if (isEmpty) return "";
         let metadata = getMetadata(getRawValue(value), countriesList);
         metadata = metadata || getCountry(countryCode as any);
         return ({...metadata})?.[0] + ({...metadata})?.[2];
-    }, [countriesList, countryCode, value])
+    }, [countriesList, countryCode, isEmpty, value])
 
     const onKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
         onKeyDownMaskHandler(event);
@@ -100,9 +114,10 @@ const PhoneInput = forwardRef(({
         const formattedNumber = getFormattedNumber(event.target.value, pattern);
         const phoneMetadata = parsePhoneNumber(formattedNumber, countriesList);
         setCountryCode(phoneMetadata.isoCode as any);
+        setIsEmpty(disableDefaultCountry && !getRawValue(formattedNumber));
         setValue(formattedNumber);
         handleChange({...phoneMetadata, valid: (strict: boolean) => checkValidity(phoneMetadata, strict)}, event);
-    }, [countriesList, handleChange, pattern, setValue])
+    }, [countriesList, disableDefaultCountry, handleChange, pattern, setValue])
 
     const onInput = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         onInputMaskHandler(event);
@@ -123,6 +138,12 @@ const PhoneInput = forwardRef(({
     useEffect(() => {
         if (initiatedRef.current) return;
         initiatedRef.current = true;
+        if (isEmpty) {
+            // Keep the input empty instead of prefilling the default country code.
+            setValue("");
+            onMount({countryCode: null, areaCode: null, phoneNumber: null, valid: () => false});
+            return;
+        }
         let initialValue = getRawValue(value);
         if (!initialValue.startsWith(metadata?.[2] as string)) {
             initialValue = metadata?.[2] as string;
@@ -132,7 +153,7 @@ const PhoneInput = forwardRef(({
         onMount({...phoneMetadata, valid: (strict: boolean) => checkValidity(phoneMetadata, strict)});
         setCountryCode(phoneMetadata.isoCode as any);
         setValue(formattedNumber);
-    }, [countriesList, metadata, onMount, pattern, setValue, value])
+    }, [countriesList, isEmpty, metadata, onMount, pattern, setValue, value])
 
     return (
         <div className="mui-phone-input-wrapper"
@@ -180,6 +201,7 @@ const PhoneInput = forwardRef(({
                                             input.value = formattedNumber;
                                             setValue(formattedNumber);
                                             setCountryCode(iso);
+                                            setIsEmpty(false);
                                             setQuery("");
                                             const nativeInputValueSetter = (Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value") as any).set;
                                             nativeInputValueSetter.call(input, formattedNumber);
@@ -202,7 +224,7 @@ const PhoneInput = forwardRef(({
             <TextField
                 ref={ref}
                 type="tel"
-                value={value}
+                value={isEmpty ? "" : value}
                 variant={variant}
                 onInput={onInput}
                 disabled={disabled}
@@ -220,7 +242,7 @@ const PhoneInput = forwardRef(({
                                 }}
                                 onClick={() => setOpen(!open)}
                             >
-                                <div className={`flag ${countryCode} ${useSVG ? "svg" : ""}`}/>
+                                {isEmpty ? placeholder : <div className={`flag ${countryCode} ${useSVG ? "svg" : ""}`}/>}
                                 {enableArrow && (
                                     <svg viewBox="0 0 24 24" focusable="false" fill="currentColor"
                                          style={{paddingLeft: 4}} width="22" height="20">
