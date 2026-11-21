@@ -29,6 +29,8 @@ export interface PhoneInputProps extends Omit<TextFieldProps, "onChange"> {
 
     disableParentheses?: boolean;
 
+    disableDefaultCountry?: boolean;
+
     onlyCountries?: string[];
 
     excludeCountries?: string[];

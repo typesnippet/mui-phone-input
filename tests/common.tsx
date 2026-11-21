@@ -129,4 +129,79 @@ export default function commonTests(PhoneInput: any, Button: any, theme: any, Th
             assert(input.getAttribute("value") === "+1 (702) 123 4567");
         })
     })
+    describe("Checking the `disableDefaultCountry` property", () => {
+        const inputOf = (container: any) => container.querySelector("input[type=tel]") as HTMLInputElement;
+        const placeholderOf = (container: any) => container.querySelector(".mui-phone-input-placeholder");
+
+        it("Prefills the default country code without the property", () => {
+            const onMount = jest.fn();
+            const {container} = render(<PhoneInput country="fr" onlyCountries={["fr", "br"]} onMount={onMount}/>);
+            assert(inputOf(container).value === "+33");
+            assert(container.querySelector(".flag.fr"));
+            assert(!placeholderOf(container));
+            assert(onMount.mock.calls[0][0].countryCode === 33);
+        })
+
+        it("Keeps the input empty and shows a placeholder", () => {
+            const onMount = jest.fn();
+            const {container} = render(<PhoneInput country="fr" onlyCountries={["fr", "br"]} onMount={onMount}
+                                                   disableDefaultCountry/>);
+            assert(inputOf(container).value === "");
+            assert(!container.querySelector(".flag"));
+            assert(placeholderOf(container));
+            assert(onMount.mock.calls.length === 1);
+            const [mounted] = onMount.mock.calls[0];
+            assert(mounted.countryCode === null && mounted.areaCode === null && mounted.phoneNumber === null);
+            assert(mounted.valid() === false);
+        })
+
+        it("Detects the country from the typed number", async () => {
+            const onChange = jest.fn();
+            const {container} = render(<PhoneInput country="fr" onlyCountries={["fr", "br"]} onChange={onChange}
+                                                   disableDefaultCountry/>);
+            const input = inputOf(container);
+            await userEvent.type(input, "5511912345678");
+            assert(input.value === "+55 (11) 91234 5678");
+            assert(container.querySelector(".flag.br"));
+            assert(!placeholderOf(container));
+            const [value] = onChange.mock.calls[onChange.mock.calls.length - 1];
+            assert(value.countryCode === 55 && value.areaCode === "11" && value.phoneNumber === "912345678");
+            assert(value.isoCode === "br" && value.valid());
+        })
+
+        it("Prefills the selected country code", async () => {
+            if (theme === null) return; // Skip for @mui/base distribution, which has no dropdown
+            const {container} = render(<PhoneInput country="fr" onlyCountries={["fr", "br"]} disableDefaultCountry/>);
+            await act(async () => {
+                await userEvent.click(placeholderOf(container));
+            });
+            await act(async () => {
+                await userEvent.click(screen.getByText(/Brazil/));
+                await new Promise(r => setTimeout(r, 200));
+            });
+            assert(inputOf(container).value === "+55");
+            assert(container.querySelector(".flag.br"));
+            assert(!placeholderOf(container));
+        })
+
+        it("Keeps a given initial value as is", () => {
+            const {container} = render(<PhoneInput value={{countryCode: 1, areaCode: "702", phoneNumber: "1234567"}}
+                                                   disableDefaultCountry/>);
+            assert(inputOf(container).value === "+1 (702) 123 4567");
+            assert(container.querySelector(".flag.us"));
+            assert(!placeholderOf(container));
+        })
+
+        it("Shows the placeholder again after clearing the input", async () => {
+            const {container} = render(<PhoneInput country="fr" onlyCountries={["fr", "br"]} disableDefaultCountry/>);
+            const input = inputOf(container);
+            const inputValue = () => input.value;
+            await userEvent.type(input, "55");
+            assert(inputValue() === "+55");
+            assert(!placeholderOf(container));
+            await userEvent.clear(input);
+            assert(inputValue() === "");
+            assert(placeholderOf(container));
+        })
+    })
 }
