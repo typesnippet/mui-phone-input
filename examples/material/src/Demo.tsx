@@ -143,6 +143,7 @@ const Demo = () => {
     const [distinct, setDistinct] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(false);
     const [parentheses, setParentheses] = useState(true);
+    const [defaultCountry, setDefaultCountry] = useState(true);
     const [variant, setVariant] = useState<any>("outlined");
     const [searchVariant, setSearchVariant] = useState<any>("standard");
 
@@ -174,10 +175,11 @@ const Demo = () => {
         if (search && dropdown) code += "    enableSearch\n";
         if (!dropdown) code += "    disableDropdown\n";
         if (!parentheses) code += "    disableParentheses\n";
+        if (!defaultCountry) code += "    disableDefaultCountry\n";
         if (code === "<PhoneInput\n") code = "<PhoneInput />";
         else code += "/>";
         return code;
-    }, [distinct, disabled, useSvg, arrow, search, dropdown, parentheses])
+    }, [distinct, disabled, useSvg, arrow, search, dropdown, parentheses, defaultCountry])
 
     return (
         <ThemeProvider theme={theme}>
@@ -249,6 +251,25 @@ const Demo = () => {
                                             color="primary"
                                             sx={{padding: 0}}
                                             onChange={() => setParentheses(!parentheses)}
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow sx={{"&:last-child td, &:last-child th": {border: 0}}}>
+                                    <TableCell component="th" scope="row">
+                                        Default Country
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <Checkbox
+                                            defaultChecked
+                                            color="primary"
+                                            sx={{padding: 0}}
+                                            onChange={() => {
+                                                // The option applies to an empty value on mount, so start over
+                                                setValue(null);
+                                                setShow(false);
+                                                setDefaultCountry(!defaultCountry);
+                                                setTimeout(() => setShow(true), 10);
+                                            }}
                                         />
                                     </TableCell>
                                 </TableRow>
@@ -415,6 +436,7 @@ const Demo = () => {
                                 disableDropdown={!dropdown}
                                 searchVariant={searchVariant}
                                 disableParentheses={!parentheses}
+                                disableDefaultCountry={!defaultCountry}
                             />
                         )}
                         {(preview && value && !error) && (
